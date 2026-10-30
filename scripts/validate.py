@@ -5,7 +5,10 @@ Vérifie : le schéma JSON de l'index et de chaque flux, que chaque flux de l'in
 existe, que les identifiants d'items sont uniques, et (option --check-links)
 que chaque lien répond. Code de sortie 0 si tout est valide, 1 sinon.
 
-Usage : python3 scripts/validate.py [--check-links] [dossier_racine]
+Le dossier validé contient les flux EN CLAIR (samples/ pour la démo, ou le dossier
+de travail d'une routine avant chiffrement).
+
+Usage : python3 scripts/validate.py [--check-links] [dossier_des_flux]
 """
 import json
 import sys
@@ -49,11 +52,11 @@ def item_links(item):
             yield detail[key]
 
 
-def validate(root: Path, check_links: bool) -> list[str]:
+def validate(feeds_dir: Path, check_links: bool) -> list[str]:
+    root = Path(__file__).resolve().parent.parent
     fmt = FormatChecker()
     index_v = Draft202012Validator(load(root / "schema/index.schema.json"), format_checker=fmt)
     feed_v = Draft202012Validator(load(root / "schema/feed.schema.json"), format_checker=fmt)
-    feeds_dir = root / "feeds"
     errors = []
 
     index = load(feeds_dir / "index.json")
@@ -85,8 +88,8 @@ def validate(root: Path, check_links: bool) -> list[str]:
 def main(argv):
     check_links = "--check-links" in argv
     args = [a for a in argv if not a.startswith("--")]
-    root = Path(args[0]) if args else Path(__file__).resolve().parent.parent
-    errors = validate(root, check_links)
+    feeds_dir = Path(args[0]) if args else Path(__file__).resolve().parent.parent / "samples"
+    errors = validate(feeds_dir, check_links)
     for e in errors:
         print(f"ERREUR {e}")
     print("Flux valides." if not errors else f"{len(errors)} erreur(s).")

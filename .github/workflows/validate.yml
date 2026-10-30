@@ -10,5 +10,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install jsonschema
-      - run: python scripts/validate.py --check-links .
+      - run: pip install jsonschema cryptography
+      - run: python scripts/validate.py samples

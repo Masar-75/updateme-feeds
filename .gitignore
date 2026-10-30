@@ -1,0 +1,3 @@
+# Fichiers en clair : ne jamais les committer
+plain/
+*.plain.json
