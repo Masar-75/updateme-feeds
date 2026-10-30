@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "feedId": "emploi",
+  "updatedAt": "2026-10-30T06:00:00Z",
+  "demo": true,
+  "items": [
+    {
+      "id": "emploi-demo-1",
+      "title": "Exemple : Développeur Android",
+      "subtitle": "Entreprise fictive · Paris",
+      "summary": "Offre de démonstration pour tester la carte et la fiche emploi.",
+      "publishedAt": "2026-10-30",
+      "tags": [
+        "Kotlin",
+        "CDI"
+      ],
+      "sourceUrl": "https://example.org/updateme/emploi-demo-1",
+      "detail": {
+        "kind": "job",
+        "company": "Entreprise fictive",
+        "location": "Paris",
+        "contract": "CDI",
+        "remote": "partiel",
+        "salary": "45 à 55 k€",
+        "score": 82,
+        "matchedCriteria": [
+          "Kotlin",
+          "Télétravail partiel"
+        ],
+        "missingCriteria": [
+          "Salaire non confirmé"
+        ]
+      }
+    },
+    {
+      "id": "emploi-demo-2",
+      "title": "Exemple : Ingénieur DevOps",
+      "subtitle": "Société exemple · Lyon",
+      "summary": "Deuxième offre de démonstration.",
+      "publishedAt": "2026-10-30",
+      "tags": [
+        "Cloud"
+      ],
+      "sourceUrl": "https://example.org/updateme/emploi-demo-2",
+      "detail": {
+        "kind": "job",
+        "company": "Société exemple",
+        "location": "Lyon",
+        "contract": "CDD",
+        "remote": "aucun",
+        "score": 55,
+        "matchedCriteria": [
+          "Cloud"
+        ],
+        "missingCriteria": [
+          "Pas de télétravail"
+        ]
+      }
+    }
+  ]
+}

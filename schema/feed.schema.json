@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://masar-75.github.io/updateme-feeds/schema/feed.schema.json",
+  "title": "Flux d'un thème UpdateMe",
+  "type": "object",
+  "required": ["schemaVersion", "feedId", "updatedAt", "items"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "feedId": { "$ref": "#/$defs/slug" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "demo": { "type": "boolean", "description": "true pour des données d'exemple : la validation ne teste pas les liens." },
+    "items": { "type": "array", "items": { "$ref": "#/$defs/item" } }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "url": { "type": "string", "pattern": "^https://" },
+    "item": {
+      "type": "object",
+      "required": ["id", "title", "publishedAt", "sourceUrl", "detail"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "title": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "subtitle": { "type": "string", "maxLength": 120 },
+        "summary": { "type": "string", "maxLength": 400 },
+        "imageUrl": { "$ref": "#/$defs/url" },
+        "publishedAt": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}" },
+        "tags": { "type": "array", "items": { "type": "string" }, "maxItems": 6 },
+        "sourceUrl": { "$ref": "#/$defs/url" },
+        "aiGenerated": { "type": "boolean", "description": "true si le contenu a été écrit par Claude et non repris d'une source." },
+        "detail": { "$ref": "#/$defs/detail" }
+      }
+    },
+    "detail": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": { "kind": { "enum": ["job", "movie", "music", "boardgame", "recipe", "article"] } },
+      "allOf": [
+        { "if": { "properties": { "kind": { "const": "job" } } }, "then": { "$ref": "#/$defs/job" } },
+        { "if": { "properties": { "kind": { "const": "movie" } } }, "then": { "$ref": "#/$defs/movie" } },
+        { "if": { "properties": { "kind": { "const": "music" } } }, "then": { "$ref": "#/$defs/music" } },
+        { "if": { "properties": { "kind": { "const": "boardgame" } } }, "then": { "$ref": "#/$defs/boardgame" } },
+        { "if": { "properties": { "kind": { "const": "recipe" } } }, "then": { "$ref": "#/$defs/recipe" } },
+        { "if": { "properties": { "kind": { "const": "article" } } }, "then": { "$ref": "#/$defs/article" } }
+      ]
+    },
+    "job": {
+      "required": ["company", "location"],
+      "properties": {
+        "company": { "type": "string" },
+        "location": { "type": "string" },
+        "contract": { "enum": ["CDI", "CDD", "Freelance", "Alternance", "Stage", "Autre"] },
+        "remote": { "enum": ["aucun", "partiel", "complet"] },
+        "salary": { "type": "string" },
+        "score": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "matchedCriteria": { "type": "array", "items": { "type": "string" } },
+        "missingCriteria": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "movie": {
+      "properties": {
+        "director": { "type": "string" },
+        "cast": { "type": "array", "items": { "type": "string" } },
+        "durationMinutes": { "type": "integer", "minimum": 1 },
+        "genres": { "type": "array", "items": { "type": "string" } },
+        "rating": { "type": "number", "minimum": 0, "maximum": 10 },
+        "trailerUrl": { "$ref": "#/$defs/url" },
+        "whereToWatch": { "type": "array", "items": { "type": "string" } },
+        "whyYou": { "type": "string" }
+      }
+    },
+    "music": {
+      "required": ["releaseType", "spotifyUrl"],
+      "properties": {
+        "releaseType": { "enum": ["album", "single", "ep", "compilation"] },
+        "tracks": { "type": "integer", "minimum": 1 },
+        "spotifyUrl": { "$ref": "#/$defs/url" },
+        "spotifyUri": { "type": "string", "pattern": "^spotify:(album|track|artist|playlist):[A-Za-z0-9]+$" }
+      }
+    },
+    "boardgame": {
+      "properties": {
+        "minPlayers": { "type": "integer", "minimum": 1 },
+        "maxPlayers": { "type": "integer", "minimum": 1 },
+        "durationMinutes": { "type": "integer", "minimum": 1 },
+        "minAge": { "type": "integer", "minimum": 1 },
+        "designers": { "type": "array", "items": { "type": "string" } },
+        "publisher": { "type": "string" }
+      }
+    },
+    "recipe": {
+      "properties": {
+        "totalMinutes": { "type": "integer", "minimum": 1 },
+        "servings": { "type": "integer", "minimum": 1 },
+        "seasonalProduce": { "type": "array", "items": { "type": "string" } },
+        "ingredients": { "type": "array", "items": { "type": "string" } },
+        "steps": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "article": {
+      "properties": {
+        "source": { "type": "string" },
+        "keyPoints": { "type": "array", "items": { "type": "string" }, "maxItems": 5 }
+      }
+    }
+  }
+}

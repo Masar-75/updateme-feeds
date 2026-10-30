@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "feedId": "musique",
+  "updatedAt": "2026-10-30T06:00:00Z",
+  "demo": true,
+  "items": [
+    {
+      "id": "musique-demo-1",
+      "title": "Exemple : Album fictif",
+      "subtitle": "Artiste fictif",
+      "summary": "Sortie de démonstration : le bouton ouvre la page d'accueil de Spotify.",
+      "publishedAt": "2026-10-30",
+      "tags": [
+        "Rock",
+        "Album"
+      ],
+      "sourceUrl": "https://example.org/updateme/musique-demo-1",
+      "detail": {
+        "kind": "music",
+        "releaseType": "album",
+        "tracks": 11,
+        "spotifyUrl": "https://open.spotify.com/"
+      }
+    }
+  ]
+}

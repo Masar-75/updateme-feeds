@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "feedId": "recettes",
+  "updatedAt": "2026-10-30T06:00:00Z",
+  "demo": true,
+  "items": [
+    {
+      "id": "recettes-demo-1",
+      "title": "Exemple : Velouté de potimarron",
+      "subtitle": "30 min · 4 personnes",
+      "summary": "Recette de démonstration écrite par Claude.",
+      "publishedAt": "2026-10-30",
+      "tags": [
+        "Automne"
+      ],
+      "sourceUrl": "https://example.org/updateme/recettes-demo-1",
+      "aiGenerated": true,
+      "detail": {
+        "kind": "recipe",
+        "totalMinutes": 30,
+        "servings": 4,
+        "seasonalProduce": [
+          "potimarron",
+          "châtaigne"
+        ],
+        "ingredients": [
+          "1 potimarron",
+          "1 oignon",
+          "50 cl de bouillon",
+          "10 cl de crème"
+        ],
+        "steps": [
+          "Couper le potimarron en cubes sans l'éplucher.",
+          "Faire revenir l'oignon, ajouter le potimarron et le bouillon.",
+          "Cuire 20 minutes puis mixer avec la crème."
+        ]
+      }
+    }
+  ]
+}

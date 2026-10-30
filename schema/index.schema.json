@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://masar-75.github.io/updateme-feeds/schema/index.schema.json",
+  "title": "Index des flux UpdateMe",
+  "type": "object",
+  "required": ["schemaVersion", "generatedAt", "feeds"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "feeds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "kind", "url", "updatedAt"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "title": { "type": "string", "minLength": 1, "maxLength": 24 },
+          "icon": { "type": "string" },
+          "kind": { "enum": ["job", "movie", "music", "boardgame", "recipe", "article"] },
+          "url": { "type": "string", "pattern": "^[a-z0-9-]+\\.json$" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

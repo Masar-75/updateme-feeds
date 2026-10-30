@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-30T06:00:00Z",
+  "feeds": [
+    {
+      "id": "emploi",
+      "title": "Emploi",
+      "icon": "work",
+      "kind": "job",
+      "url": "emploi.json",
+      "updatedAt": "2026-10-30T06:00:00Z"
+    },
+    {
+      "id": "cinema",
+      "title": "Cinéma",
+      "icon": "movie",
+      "kind": "movie",
+      "url": "cinema.json",
+      "updatedAt": "2026-10-30T06:00:00Z"
+    },
+    {
+      "id": "films-duo",
+      "title": "Julie & moi",
+      "icon": "couple",
+      "kind": "movie",
+      "url": "films-duo.json",
+      "updatedAt": "2026-10-30T06:00:00Z"
+    },
+    {
+      "id": "musique",
+      "title": "Musique",
+      "icon": "music",
+      "kind": "music",
+      "url": "musique.json",
+      "updatedAt": "2026-10-30T06:00:00Z"
+    },
+    {
+      "id": "jeux",
+      "title": "Jeux",
+      "icon": "game",
+      "kind": "boardgame",
+      "url": "jeux.json",
+      "updatedAt": "2026-10-30T06:00:00Z"
+    },
+    {
+      "id": "recettes",
+      "title": "Recettes",
+      "icon": "recipe",
+      "kind": "recipe",
+      "url": "recettes.json",
+      "updatedAt": "2026-10-30T06:00:00Z"
+    },
+    {
+      "id": "veille",
+      "title": "Veille",
+      "icon": "tech",
+      "kind": "article",
+      "url": "veille.json",
+      "updatedAt": "2026-10-30T06:00:00Z"
+    }
+  ]
+}

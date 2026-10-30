@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "feedId": "jeux",
+  "updatedAt": "2026-10-30T06:00:00Z",
+  "demo": true,
+  "items": [
+    {
+      "id": "jeux-demo-1",
+      "title": "Exemple : Jeu de placement",
+      "subtitle": "Éditeur fictif",
+      "summary": "Jeu de démonstration.",
+      "publishedAt": "2026-10-30",
+      "tags": [
+        "Stratégie"
+      ],
+      "sourceUrl": "https://example.org/updateme/jeux-demo-1",
+      "detail": {
+        "kind": "boardgame",
+        "minPlayers": 2,
+        "maxPlayers": 4,
+        "durationMinutes": 60,
+        "minAge": 10,
+        "designers": [
+          "Auteur fictif"
+        ],
+        "publisher": "Éditeur fictif"
+      }
+    }
+  ]
+}
