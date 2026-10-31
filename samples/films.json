@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "feedId": "films",
+  "updatedAt": "2026-10-31T06:00:00Z",
+  "demo": true,
+  "items": [
+    {
+      "id": "films-demo-1",
+      "title": "Exemple : Film d'aventure",
+      "subtitle": "En salle depuis mercredi",
+      "summary": "Film de démonstration.",
+      "publishedAt": "2026-10-30",
+      "tags": [
+        "Aventure"
+      ],
+      "sourceUrl": "https://example.org/updateme/films-demo-1",
+      "detail": {
+        "kind": "movie",
+        "director": "Réalisatrice fictive",
+        "cast": [
+          "Acteur A",
+          "Actrice B"
+        ],
+        "durationMinutes": 124,
+        "genres": [
+          "Aventure"
+        ],
+        "rating": 7.6,
+        "whereToWatch": [
+          "Cinéma du quartier"
+        ],
+        "whyYou": "Tu aimes les grands espaces."
+      }
+    },
+    {
+      "id": "films-demo-2",
+      "title": "Exemple : Comédie romantique",
+      "subtitle": "Pour une soirée à deux · plateforme de streaming",
+      "summary": "Film de démonstration pour une soirée à deux.",
+      "publishedAt": "2026-10-30",
+      "tags": [
+        "Comédie"
+      ],
+      "sourceUrl": "https://example.org/updateme/films-demo-2",
+      "detail": {
+        "kind": "movie",
+        "durationMinutes": 98,
+        "genres": [
+          "Comédie"
+        ],
+        "whereToWatch": [
+          "Plateforme exemple"
+        ],
+        "whyYou": "Un genre que vous aimez tous les deux."
+      }
+    }
+  ]
+}

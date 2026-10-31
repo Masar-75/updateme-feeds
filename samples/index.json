@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-30T06:00:00Z",
+  "generatedAt": "2026-10-31T06:00:00Z",
   "feeds": [
     {
       "id": "emploi",
@@ -8,47 +8,31 @@
       "icon": "work",
       "kind": "job",
       "url": "emploi.json",
-      "updatedAt": "2026-10-30T06:00:00Z"
+      "updatedAt": "2026-10-31T06:00:00Z"
     },
     {
-      "id": "cinema",
-      "title": "Cinéma",
+      "id": "films",
+      "title": "Films",
       "icon": "movie",
       "kind": "movie",
-      "url": "cinema.json",
-      "updatedAt": "2026-10-30T06:00:00Z"
+      "url": "films.json",
+      "updatedAt": "2026-10-31T06:00:00Z"
     },
     {
-      "id": "films-duo",
-      "title": "Julie & moi",
-      "icon": "couple",
-      "kind": "movie",
-      "url": "films-duo.json",
-      "updatedAt": "2026-10-30T06:00:00Z"
-    },
-    {
-      "id": "musique",
-      "title": "Musique",
-      "icon": "music",
-      "kind": "music",
-      "url": "musique.json",
-      "updatedAt": "2026-10-30T06:00:00Z"
-    },
-    {
-      "id": "jeux",
-      "title": "Jeux",
+      "id": "jeux-societe",
+      "title": "Jeux de société",
       "icon": "game",
       "kind": "boardgame",
-      "url": "jeux.json",
-      "updatedAt": "2026-10-30T06:00:00Z"
+      "url": "jeux-societe.json",
+      "updatedAt": "2026-10-31T06:00:00Z"
     },
     {
-      "id": "recettes",
-      "title": "Recettes",
-      "icon": "recipe",
-      "kind": "recipe",
-      "url": "recettes.json",
-      "updatedAt": "2026-10-30T06:00:00Z"
+      "id": "jeux-video",
+      "title": "Jeux vidéo",
+      "icon": "videogame",
+      "kind": "videogame",
+      "url": "jeux-video.json",
+      "updatedAt": "2026-10-31T06:00:00Z"
     },
     {
       "id": "veille",
@@ -56,7 +40,15 @@
       "icon": "tech",
       "kind": "article",
       "url": "veille.json",
-      "updatedAt": "2026-10-30T06:00:00Z"
+      "updatedAt": "2026-10-31T06:00:00Z"
+    },
+    {
+      "id": "revue",
+      "title": "Revue thématique",
+      "icon": "news",
+      "kind": "article",
+      "url": "revue.json",
+      "updatedAt": "2026-10-31T06:00:00Z"
     }
   ]
 }

@@ -1,19 +1,20 @@
 {
   "schemaVersion": 1,
   "feedId": "veille",
-  "updatedAt": "2026-10-30T06:00:00Z",
+  "updatedAt": "2026-10-31T06:00:00Z",
   "demo": true,
   "items": [
     {
       "id": "veille-demo-1",
       "title": "Exemple : Nouveauté Kotlin",
       "subtitle": "Blog fictif",
-      "summary": "Article de démonstration.",
+      "summary": "Synthèse de démonstration écrite par Claude.",
       "publishedAt": "2026-10-30",
       "tags": [
         "Kotlin"
       ],
       "sourceUrl": "https://example.org/updateme/veille-demo-1",
+      "aiGenerated": true,
       "detail": {
         "kind": "article",
         "source": "Blog fictif",

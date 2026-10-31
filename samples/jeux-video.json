@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "feedId": "jeux-video",
+  "updatedAt": "2026-10-31T06:00:00Z",
+  "demo": true,
+  "items": [
+    {
+      "id": "jeux-video-demo-1",
+      "title": "Exemple : Jeu d'aventure",
+      "subtitle": "Studio fictif · PC, Switch",
+      "summary": "Jeu vidéo de démonstration pour tester la carte et la fiche jeu vidéo.",
+      "publishedAt": "2026-10-31",
+      "tags": [
+        "Aventure"
+      ],
+      "sourceUrl": "https://example.org/updateme/jeux-video-demo-1",
+      "detail": {
+        "kind": "videogame",
+        "platforms": [
+          "PC",
+          "Switch"
+        ],
+        "genres": [
+          "Aventure",
+          "Exploration"
+        ],
+        "releaseDate": "2026-11-12",
+        "studio": "Studio fictif",
+        "rating": 8.1
+      }
+    }
+  ]
+}
