@@ -16,7 +16,7 @@ renseigné, que les parutions plus récentes.
 
 ## Quoi chercher
 
-Les parutions des deux dernières semaines et celles du mois à venir, en français, dans les formats
+Les parutions des deux dernières semaines et celles du mois à venir, dans les langues de `langues` (français par défaut) et les formats
 choisis : sites des éditeurs, programmes de parution, presse et sites spécialisés (pour la BD : listes de
 sorties des éditeurs et sites de BD). Les fiches (auteurs, ISBN, pages) peuvent venir d'Open Library ou
 de la page de l'éditeur. Une suite de série déjà bien notée passe en priorité.
