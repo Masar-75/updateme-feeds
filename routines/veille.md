@@ -4,13 +4,15 @@ Onglet `veille`, kind `article`. Suis le socle commun de `routines/README.md`.
 
 ## Critères (`tabs.veille` de `criteres.json`)
 
-`metier`, `technos` (liste), `niveau`, `sources` (sites ou flux à privilégier), `exclure` (sites, sujets).
+`metier`, `technos` (liste), `niveau` (synthèse, détaillé, expert). L'app ne propose pas encore de sources
+à privilégier ni à exclure : s'en tenir aux sources primaires.
 
 ## Quoi chercher
 
 Les nouveautés des 7 derniers jours (ou depuis `updatedAt` du flux) sur le métier et chaque techno :
 versions publiées, annonces officielles, articles de fond, retours d'expérience. Priorité aux sources
-primaires (blog officiel, notes de version, dépôt du projet), puis aux sources de `sources`.
+primaires (blog officiel, notes de version, dépôt du projet). `niveau` règle la profondeur :
+synthèse = l'essentiel en une phrase, expert = détails techniques et changements incompatibles.
 Regrouper les doublons : une seule carte par nouveauté, avec la source la plus primaire.
 
 Entre 5 et 15 items. Mieux vaut 3 items solides que 15 approximatifs.

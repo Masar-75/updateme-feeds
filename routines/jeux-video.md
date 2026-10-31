@@ -4,7 +4,8 @@ Onglet `jeux-video`, kind `videogame`. Suis le socle commun de `routines/README.
 
 ## Critères (`tabs.jeux-video` de `criteres.json`)
 
-`plateformes` (par défaut : PC seulement), `genres` aimés (par défaut : infiltration) et à éviter, notes d'Arthur.
+`plateformes` (par défaut : PC seulement), `genresPreferes` (par défaut : infiltration), `heuresParSemaine`,
+`mode` (solo, multijoueur, coopération), `genresAEviter`, et `notes` d'Arthur (1 à 5).
 
 ## Quoi chercher
 

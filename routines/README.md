@@ -14,6 +14,7 @@ même socle (ci-dessous) ; le fichier de l'onglet dit seulement quoi chercher et
 | `transmission.md` | (aucun) : applique un prompt « Transmettre à Claude » collé par Arthur | à la demande | M2 |
 
 Les fréquences réelles sont celles de `config/criteres.json` (`tabs.<id>.frequence`), réglées depuis l'app.
+Les clés des critères sont celles de l'app : la liste fait référence dans `transmission.md`.
 
 ## Prérequis de l'environnement
 

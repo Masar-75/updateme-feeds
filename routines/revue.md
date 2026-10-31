@@ -4,8 +4,8 @@ Onglet `revue`, kind `article`. Suis le socle commun de `routines/README.md`.
 
 ## Critères (`tabs.revue` de `criteres.json`)
 
-`sujets` : liste ajoutée petit à petit depuis l'app, chacun avec éventuellement `mediasInclus`, `mediasExclus`.
-Sans sujet, ne rien publier.
+`sujets` : liste ajoutée petit à petit depuis l'app. `mediasInclus` et `mediasExclus` valent pour tous
+les sujets. Sans sujet, ne rien publier.
 
 ## Quoi chercher
 

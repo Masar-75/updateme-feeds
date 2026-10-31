@@ -4,7 +4,9 @@ Onglet `jeux-societe`, kind `boardgame`. Suis le socle commun de `routines/READM
 
 ## Critères (`tabs.jeux-societe` de `criteres.json`)
 
-`joueurs` (habituel, min, max), `dureeMax`, `complexite`, `mecaniques` et `themes` aimés ou à éviter, notes d'Arthur.
+`joueurs` (nombre habituel), `dureeMaxMin`, `complexite` (légère, moyenne, experte), `style` (coopératif,
+compétitif, en équipes), `themesAEviter`, et `notes` d'Arthur (1 à 5) : les mécaniques et thèmes aimés
+se déduisent des jeux bien notés.
 
 ## Quoi chercher
 

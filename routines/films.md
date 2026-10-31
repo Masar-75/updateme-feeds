@@ -4,8 +4,9 @@ Onglet `films`, kind `movie`. Suis le socle commun de `routines/README.md`.
 
 ## Critères (`tabs.films` de `criteres.json`)
 
-`profils` (Arthur, Julie : genres aimés, à éviter, notes), `cinemas` (Astrée, Forum, Pathé à Chambéry),
-`plateformes` (Netflix, Canal+), `duree`, `toggles` actifs.
+`pourQui` (arthur, julie, à deux), `cinemas` (Astrée, Forum, Pathé Chambéry), `plateformes` (Netflix,
+Canal+), `genresAEviter`, `dureeMaxMin`, `version` (VF, VOST, indifférent), et `notes` : les notes
+d'Arthur et de Julie (1 à 5, par `personne`), qui forment leurs profils de goût.
 
 ## Quoi chercher
 
@@ -14,7 +15,8 @@ Onglet `films`, kind `movie`. Suis le socle commun de `routines/README.md`.
 - **Streaming** : les nouveautés et le catalogue des plateformes choisies (TMDB « watch providers » en France,
   ou pages des plateformes).
 
-Classer selon les profils : jamais un genre « à éviter » ; pour une soirée à deux, règle « moyenne sans
+Ne chercher que pour les personnes de `pourQui`, que dans les `cinemas` et `plateformes` cochés.
+Classer selon les notes : jamais un genre « à éviter », jamais plus long que `dureeMaxMin` ; pour une soirée à deux, règle « moyenne sans
 misère » (le film doit convenir aux deux). Environ 1 proposition sur 5 est une découverte : elle partage
 au moins un aspect aimé et le dit dans `whyYou`. Au plus 12 films.
 
