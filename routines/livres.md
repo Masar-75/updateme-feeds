@@ -8,8 +8,11 @@ la planification passe l'id de la rubrique, et tout le reste vient de `tabs.<id>
 
 ## Critères (`tabs.<id>` de `criteres.json`)
 
-Les clés exactes sont celles de l'app, listées dans `transmission.md` : formats voulus (roman, BD, manga,
-comics, essai), genres aimés et à éviter, langue, et les `notes` d'Arthur et de Julie (domaine `livre`).
+Clés de l'app (référence : `transmission.md`) : `nom`, `formats` (roman, bd, manga, comics, essai, autre),
+`genresPreferes`, `auteursAimes` (auteurs et dessinateurs), `genresAEviter`, `langues` (français, anglais,
+autre), `parutionMaxMois`. Les `notes` d'Arthur et de Julie (domaine `livre`) sont dans `tabs.livres.notes`,
+communes à toutes les rubriques Livres. Ne garder que les formats de `formats` et, si `parutionMaxMois` est
+renseigné, que les parutions plus récentes.
 
 ## Quoi chercher
 

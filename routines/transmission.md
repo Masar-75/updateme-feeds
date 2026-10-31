@@ -32,7 +32,8 @@ Une consigne en français, puis un bloc JSON :
 
 ## Onglets et questions (clés réelles de l'app)
 
-Les ids d'onglet sont ceux de l'index : `emploi`, `films`, `jeux-societe`, `jeux-video`, `veille`, `revue`.
+Les ids d'onglet sont ceux de l'index : `emploi`, `films`, `jeux-societe`, `jeux-video`, `livres`, `veille`, `revue`,
+plus une copie de rubrique Livres par `livres-<nom>` créée dans l'app (voir plus bas).
 Les valeurs de choix sont enregistrées telles quelles.
 
 | Onglet | Questions (`criteres.<onglet>.…`, ou `reponses` d'une recherche pour l'emploi) |
@@ -41,10 +42,11 @@ Les valeurs de choix sont enregistrées telles quelles.
 | `films` | `pourQui` (arthur, julie, à deux), `cinemas` (Astrée, Forum, Pathé Chambéry), `plateformes` (Netflix, Canal+), `genresAEviter`, `dureeMaxMin`, `version` (VF, VOST, indifférent) |
 | `jeux-societe` | `joueurs`, `dureeMaxMin`, `complexite` (légère, moyenne, experte), `style` (coopératif, compétitif, en équipes), `themesAEviter` |
 | `jeux-video` | `plateformes` (PC, PlayStation, Xbox, Switch, mobile), `genresPreferes`, `heuresParSemaine`, `mode` (solo, multijoueur, coopération), `genresAEviter` |
+| `livres` et `livres-<nom>` | `nom` (nom affiché de la rubrique), `formats` (roman, bd, manga, comics, essai, autre : mêmes valeurs que `book.format`), `genresPreferes`, `auteursAimes` (auteurs et dessinateurs), `genresAEviter`, `langues` (français, anglais, autre), `parutionMaxMois` (ne garder que les parutions de moins de N mois) |
 | `veille` | `metier`, `technos`, `niveau` (synthèse, détaillé, expert) |
 | `revue` | `sujets` (ajoutés petit à petit), `mediasInclus`, `mediasExclus` |
 
-Notes : `domaine` vaut film, jeu-societe, jeu-video ou musique ; `personne` vaut arthur ou julie ;
+Notes : `domaine` vaut film, jeu-societe, jeu-video, livre ou musique ; `personne` vaut arthur ou julie ;
 `note` va de 1 (détesté) à 5 (adoré) ; `source` vaut `tmdb` (film trouvé par la recherche de l'app,
 `id` = id TMDB) ou `flux` (note donnée depuis une carte, `id` = id de l'item du flux).
 
@@ -59,8 +61,18 @@ contient les réponses aux questions (mêmes clés que ci-dessus), plus trois cl
 | `criteres.<onglet>` (objet) | `ajout` ou `modification` : écrire chaque réponse dans `tabs.<onglet>` ; `suppression` : retirer toutes les réponses aux questions, en gardant `recherches`, `notes` et `frequence` |
 | `criteres.<onglet>.<question>` | Texte ou nombre : écrire ou retirer `tabs.<onglet>.<question>`. Liste de textes : ajouter ou retirer l'élément `valeur` |
 | `recherchesEmploi[<cle>]` | Dans `tabs.emploi.recherches`, ajouter, remplacer ou retirer l'élément de même `cle`, sous la forme `{"cle", …reponses}` (réponses à plat) |
-| `notes[<cle>]` | Dans `tabs.<onglet du domaine>.notes` (film → `films`, jeu-societe → `jeux-societe`, jeu-video → `jeux-video`, musique → `musique`), ajouter, remplacer ou retirer l'élément de même `cle` |
+| `notes[<cle>]` | Dans `tabs.<onglet du domaine>.notes` (film → `films`, jeu-societe → `jeux-societe`, jeu-video → `jeux-video`, livre → `livres`, musique → `musique`), ajouter, remplacer ou retirer l'élément de même `cle`. Les notes de livres sont communes à toutes les rubriques Livres |
 | `frequences.<onglet>` et ses champs | Écrire dans `tabs.<onglet>.frequence` ; si le rythme change, mettre à jour la planification de la routine de l'onglet |
+
+## Rubriques Livres dupliquées
+
+L'app crée une copie avec Réglages › « Ajouter une rubrique Livres » : le prompt contient alors
+`ajout criteres.livres-<nom>` (avec `nom` et `formats` du modèle choisi : `["bd"]` pour « BD récentes »,
+tous les formats sauf `autre` pour « Tous les livres ») et `ajout frequences.livres-<nom>`. Pour chaque
+nouvelle copie : ranger les critères dans `tabs.livres-<nom>`, ajouter au flux publié une entrée d'index
+`{"id": "livres-<nom>", "title": <nom>, "icon": "book", "kind": "book", "url": "livres-<nom>.json"}`, et planifier
+`routines/livres.md` avec cet id. Une `suppression` de `criteres.livres-<nom>` et de `frequences.livres-<nom>`
+retire la rubrique : enlever son entrée d'index, son flux et sa planification.
 
 Correspondance avec le format des flux : `teletravail` `total` correspond à `remote` `complet` dans une
 offre ; `salaireMinK` est en milliers d'euros par an.
