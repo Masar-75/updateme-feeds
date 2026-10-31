@@ -11,6 +11,7 @@ même socle (ci-dessous) ; le fichier de l'onglet dit seulement quoi chercher et
 | `jeux-societe.md` | Jeux de société | 1er et 15 du mois | M4 |
 | `jeux-video.md` | Jeux vidéo | 1er et 15 du mois | M4 |
 | `revue.md` | Revue thématique | lundi | M4 |
+| `livres.md` | Livres et chaque rubrique Livres dupliquée (`livres-<nom>`) | lundi | M4 |
 | `transmission.md` | (aucun) : applique un prompt « Transmettre à Claude » collé par Arthur | à la demande | M2 |
 
 Les fréquences réelles sont celles de `config/criteres.json` (`tabs.<id>.frequence`), réglées depuis l'app.

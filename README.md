@@ -10,7 +10,7 @@ Contenu de l'application Android **UpdateMe**, mis à jour par des routines Clau
 | `feeds/` | Fichiers publiés et chiffrés : `index.json` et un fichier par thème. C'est ce que lit l'app. |
 | `config/` | Critères et goûts d'Arthur, chiffrés eux aussi (`criteres.json`, écrit à partir des transmissions de l'app). |
 | `routines/` | Prompts des routines Claude, un par onglet, et le socle commun. |
-| `samples/` | Flux de démonstration **en clair**, fictifs, pour les tests. Onglets : emploi, films, jeux-societe, jeux-video, veille, revue. |
+| `samples/` | Flux de démonstration **en clair**, fictifs, pour les tests. Onglets : emploi, films, jeux-societe, jeux-video, livres, veille, revue. |
 | `samples/en-attente/` | Musique et recettes, mises de côté : hors index et jamais publiées (le chiffrement ne lit que `samples/*.json`). |
 | `schema/` | Schémas JSON du format en clair (version 1). |
 | `scripts/validate.py` | Valide des flux en clair avant chiffrement. |
@@ -39,7 +39,7 @@ git add feeds && git commit -m "…" && git push
 ## Règles du format (en clair)
 
 - Chaque item a un `id` stable (minuscules et tirets) : l'app s'en sert pour savoir ce qui est nouveau ou déjà lu.
-- `detail.kind` choisit la fiche affichée (`job`, `movie`, `music`, `boardgame`, `videogame`, `recipe`, `article`). Un type inconnu s'affiche comme un `article`.
+- `detail.kind` choisit la fiche affichée (`job`, `movie`, `music`, `boardgame`, `videogame`, `book`, `recipe`, `article`). Un type inconnu s'affiche comme un `article`.
 - `sourceUrl` est obligatoire. Un texte écrit par Claude porte `"aiGenerated": true`.
 
 ## Publication

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "feedId": "livres",
+  "updatedAt": "2026-11-01T06:00:00Z",
+  "demo": true,
+  "items": [
+    {
+      "id": "livres-demo-1",
+      "title": "Exemple : Roman d'aventure",
+      "subtitle": "Autrice fictive · Éditeur fictif",
+      "summary": "Livre de démonstration pour tester la carte et la fiche livre.",
+      "publishedAt": "2026-10-31",
+      "tags": [
+        "Aventure"
+      ],
+      "sourceUrl": "https://example.org/updateme/livres-demo-1",
+      "detail": {
+        "kind": "book",
+        "format": "roman",
+        "authors": [
+          "Autrice fictive"
+        ],
+        "publisher": "Éditeur fictif",
+        "pages": 320,
+        "genres": [
+          "Aventure"
+        ],
+        "releaseDate": "2026-10-29",
+        "whyYou": "Tu aimes les récits de voyage."
+      }
+    },
+    {
+      "id": "livres-demo-2",
+      "title": "Exemple : Album de BD",
+      "subtitle": "Scénariste et dessinateur fictifs · tome 2",
+      "summary": "BD de démonstration.",
+      "publishedAt": "2026-10-31",
+      "tags": [
+        "BD",
+        "Science-fiction"
+      ],
+      "sourceUrl": "https://example.org/updateme/livres-demo-2",
+      "detail": {
+        "kind": "book",
+        "format": "bd",
+        "authors": [
+          "Scénariste fictif"
+        ],
+        "illustrators": [
+          "Dessinateur fictif"
+        ],
+        "publisher": "Éditeur fictif",
+        "series": "Série fictive",
+        "volume": 2,
+        "pages": 56,
+        "genres": [
+          "Science-fiction"
+        ],
+        "releaseDate": "2026-10-30"
+      }
+    }
+  ]
+}

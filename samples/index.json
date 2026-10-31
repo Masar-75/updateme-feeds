@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-31T06:00:00Z",
+  "generatedAt": "2026-11-01T06:00:00Z",
   "feeds": [
     {
       "id": "emploi",
@@ -33,6 +33,14 @@
       "kind": "videogame",
       "url": "jeux-video.json",
       "updatedAt": "2026-10-31T06:00:00Z"
+    },
+    {
+      "id": "livres",
+      "title": "Livres",
+      "icon": "book",
+      "kind": "book",
+      "url": "livres.json",
+      "updatedAt": "2026-11-01T06:00:00Z"
     },
     {
       "id": "veille",
