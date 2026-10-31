@@ -8,12 +8,15 @@ Contenu de l'application Android **UpdateMe**, mis à jour par des routines Clau
 | Dossier | Contenu |
 | --- | --- |
 | `feeds/` | Fichiers publiés et chiffrés : `index.json` et un fichier par thème. C'est ce que lit l'app. |
-| `config/` | Critères et goûts d'Arthur, chiffrés eux aussi (`preferences.json`). |
+| `config/` | Critères et goûts d'Arthur, chiffrés eux aussi (`criteres.json`, écrit à partir des transmissions de l'app). |
+| `routines/` | Prompts des routines Claude, un par onglet, et le socle commun. |
 | `samples/` | Flux de démonstration **en clair**, fictifs, pour les tests. Onglets : emploi, films, jeux-societe, jeux-video, veille, revue. |
 | `samples/en-attente/` | Musique et recettes, mises de côté : hors index et jamais publiées (le chiffrement ne lit que `samples/*.json`). |
 | `schema/` | Schémas JSON du format en clair (version 1). |
 | `scripts/validate.py` | Valide des flux en clair avant chiffrement. |
 | `scripts/crypto.py` | Génère la clé, chiffre et déchiffre. |
+| `scripts/publish.py` | Outils des routines : `pull` (déchiffre dans `plain/`), `push <onglet>`, `config-push`. |
+| `scripts/selftest.py` | Test de bout en bout de `publish.py` avec une clé de test (lancé par la CI). |
 
 ## Chiffrement
 
@@ -24,12 +27,12 @@ Contenu de l'application Android **UpdateMe**, mis à jour par des routines Clau
 
 ## Travail d'une routine
 
+Le détail est dans `routines/README.md`. En bref :
+
 ```bash
-export UPDATEME_KEY=…                                   # secret de l'environnement
-python3 scripts/crypto.py decrypt config plain/config   # lire les critères
-# … écrire les flux en clair dans plain/feeds/ …
-python3 scripts/validate.py --check-links plain/feeds    # refuser tout flux invalide ou lien mort
-python3 scripts/crypto.py encrypt plain/feeds feeds
+python3 scripts/publish.py pull                      # flux publiés et critères, en clair dans plain/
+# … écrire plain/feeds/<onglet>.json …
+python3 scripts/publish.py push <onglet> --check-links  # valide, chiffre ; rien n'est publié en cas d'erreur
 git add feeds && git commit -m "…" && git push
 ```
 

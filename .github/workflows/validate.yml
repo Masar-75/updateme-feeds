@@ -12,3 +12,4 @@ jobs:
           python-version: "3.12"
       - run: pip install jsonschema cryptography
       - run: python scripts/validate.py samples
+      - run: python scripts/selftest.py
