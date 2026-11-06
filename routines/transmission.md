@@ -49,6 +49,7 @@ Les valeurs de choix sont enregistrées telles quelles.
 Notes : `domaine` vaut film, jeu-societe, jeu-video, livre ou musique ; `personne` vaut arthur ou julie ;
 `note` va de 1 (détesté) à 5 (adoré) ; `source` vaut `tmdb` (film trouvé par la recherche de l'app,
 `id` = id TMDB) ou `flux` (note donnée depuis une carte, `id` = id de l'item du flux).
+Les questionnaires de référence de l'app écrivent aussi des notes : « Aimé » vaut 4, « Pas aimé » vaut 2, « pas vu » ne donne aucune note. Pour les BD, `source` vaut `ref-bd`, `id` est un identifiant maison (par exemple `maus`), `lien` est vide et la clé a la forme `livre:<personne>:ref-bd:<id>` : se servir du `titre`, pas du lien. Une source inconnue se traite comme une note de plus, sans rien en déduire d'autre.
 
 ## Où ranger chaque changement dans `config/criteres.json`
 
