@@ -13,8 +13,8 @@ se déduisent des jeux bien notés.
 Dès que `tabs.jeux-societe.notes` contient des notes, lancer d'abord, sur `criteres.json` déchiffré :
 
 ```
-python3 scripts/reco_jeux.py --criteres plain/criteres.json --max 10 > /tmp/selection.json
-python3 scripts/reco_jeux.py --criteres plain/criteres.json --nouveautes --max 10 > /tmp/nouveautes.json
+python3 scripts/reco_jeux.py --criteres plain/config/criteres.json --max 10 > /tmp/selection.json
+python3 scripts/reco_jeux.py --criteres plain/config/criteres.json --nouveautes --max 10 > /tmp/nouveautes.json
 ```
 
 Le script (bibliothèque standard, 3 à 6 minutes, l'API est lente) :

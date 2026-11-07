@@ -12,7 +12,7 @@ Méthode (routines/jeux-societe.md) :
   6. Environ 1 sur 5 est une Découverte : partage une mécanique très aimée, mais loin du profil pour le reste.
 
 Usage :
-  python3 scripts/reco_jeux.py --criteres plain/criteres.json [--nouveautes] [--max 10] > candidats.json
+  python3 scripts/reco_jeux.py --criteres plain/config/criteres.json [--nouveautes] [--max 10] > candidats.json
   python3 scripts/reco_jeux.py --demo   # notes fictives, pour vérifier la méthode
 
 Bibliothèque standard seulement. Sortie : JSON avec, pour chaque jeu, les champs utiles à l'item
@@ -147,13 +147,25 @@ def a_eviter(g: dict, crit: dict) -> bool:
     return False
 
 
-def candidats(likes: list[int], f: dict, deja: set[int], n: int = 100) -> list[dict]:
+def nom_famille(g: dict) -> str:
+    """« Codenames: Pictures » → « codenames » : sert à ne pas reproposer un jeu déjà noté sous une autre édition."""
+    return (g.get("name") or "").split(":")[0].strip().casefold()
+
+
+def deja_note(g: dict, deja: set[int], familles: set[str]) -> bool:
+    """Jeu déjà noté, réédition (implements) ou déclinaison de même nom d'un jeu déjà noté."""
+    return (g["bgg_id"] in deja or bool(set(g.get("implements") or []) & deja)
+            or nom_famille(g) in familles)
+
+
+def candidats(likes: list[int], f: dict, deja: set[int], n: int = 100,
+              familles: set[str] = frozenset()) -> list[dict]:
     out, page = [], 1
     while len(out) < n and page <= 3:
         d = get("games/recommend/", like=likes, page=page, **f) if likes else \
             get("games/", ordering="-bayes_rating", page=page, **f)
         for g in d.get("results", []):
-            if g["bgg_id"] not in deja and not g.get("compilation"):
+            if not deja_note(g, deja, familles) and not g.get("compilation"):
                 out.append(g)
         if not d.get("next"):
             break
@@ -163,13 +175,14 @@ def candidats(likes: list[int], f: dict, deja: set[int], n: int = 100) -> list[d
 
 def selection(notes: list[dict], crit: dict, nouveautes: bool, maxi: int) -> dict:
     par_personne: dict[str, list[tuple[dict, int]]] = defaultdict(list)
-    introuvables, deja = [], set()
+    introuvables, deja, familles = [], set(), set()
     for nt in notes:
         g = retrouver(nt)
         if not g:
             introuvables.append(nt.get("titre"))
             continue
         deja.add(g["bgg_id"])
+        familles.add(nom_famille(g))
         par_personne[nt.get("personne", "arthur")].append((g, int(nt["note"])))
     profils = {p: profil(v) for p, v in par_personne.items()}
     f = filtres(crit, nouveautes)
@@ -178,7 +191,7 @@ def selection(notes: list[dict], crit: dict, nouveautes: bool, maxi: int) -> dic
     fiches: dict[int, dict] = {}
     for p, pr in (profils.items() or [("arthur", None)]):
         likes = sorted({g["bgg_id"] for g in pr["aimes"]}) if pr else []
-        pool = [g for g in candidats(likes, f, deja) if not a_eviter(g, crit)]
+        pool = [g for g in candidats(likes, f, deja, familles=familles) if not a_eviter(g, crit)]
         for rang, g in enumerate(pool):
             rangs[g["bgg_id"]][p] = 1 - rang / max(len(pool), 1)
             fiches[g["bgg_id"]] = g

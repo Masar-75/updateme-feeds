@@ -20,6 +20,11 @@ Classer selon les notes : jamais un genre « à éviter », jamais plus long que
 misère » (le film doit convenir aux deux). Environ 1 proposition sur 5 est une découverte : elle partage
 au moins un aspect aimé et le dit dans `whyYou`. Au plus 12 films.
 
+Lire les notes : `source` `tmdb` → `id` est l'id TMDB (récupérer genres, réalisateur, acteurs sur TMDB pour
+construire le profil) ; `source` `flux` → `id` est l'id d'une carte déjà publiée, se servir du `titre`.
+Une note de 4 ou 5 = aimé, 1 ou 2 = rejeté, 3 = neutre. Ne jamais reproposer un film déjà noté par la
+personne visée (même id TMDB ou même titre), ni une suite d'un film qu'elle a noté 1 ou 2.
+
 ## Remplir l'item
 
 - `title` : le titre français ; `subtitle` : « Au cinéma (nom) » ou la plateforme.
