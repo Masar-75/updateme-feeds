@@ -39,7 +39,7 @@ Les valeurs de choix sont enregistrées telles quelles.
 
 | Onglet | Questions (`criteres.<onglet>.…`, ou `reponses` d'une recherche pour l'emploi) |
 | --- | --- |
-| `emploi` | Par recherche : `metier` (le poste), `lieu`, `rayonKm`, `contrats` (CDI, CDD, Freelance, Alternance, Intérim), `teletravail` (aucun, partiel, total, indifférent), `salaireMinK` (k€ par an), `motsCles` (mots-clés à trouver dans la description de l'offre), `exclure` (mots-clés ou entreprises) |
+| `emploi` | Par recherche : `metier` (le poste), `lieu`, `rayonKm`, `contrats` (CDI, CDD, Freelance, Alternance, Intérim, Consultant : offres de cabinets de conseil, ESN ou portage, même en CDI ; voir `emploi.md`), `teletravail` (aucun, partiel, total, indifférent), `salaireMinK` (k€ par an), `motsCles` (mots-clés à trouver dans la description de l'offre), `exclure` (mots-clés ou entreprises) |
 | `films` | `pourQui` (arthur, julie, à deux), `cinemas` (Astrée, Forum, Pathé Chambéry), `plateformes` (Netflix, Canal+), `genresAEviter`, `dureeMaxMin`, `version` (VF, VOST, indifférent) |
 | `jeux-societe` | `joueurs`, `dureeMaxMin`, `complexite` (légère, moyenne, experte), `style` (coopératif, compétitif, en équipes), `themesAEviter` |
 | `jeux-video` | `plateformes` (PC, PlayStation, Xbox, Switch, mobile), `genresPreferes`, `heuresParSemaine`, `mode` (solo, multijoueur, coopération), `genresAEviter` |

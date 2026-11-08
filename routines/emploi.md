@@ -9,6 +9,13 @@ Onglet `emploi`, kind `job`. Suis le socle commun de `routines/README.md`.
 `salaireMinK` (k€ par an), `motsCles` (à trouver dans la description de l'offre), `exclure` (mots-clés
 ou entreprises). Toute réponse peut manquer : ne filtrer que sur ce qui est renseigné.
 
+`contrats` peut contenir `Consultant` (app 0.11) : il désigne les offres publiées par un cabinet de conseil,
+une ESN ou une société de portage, **quel que soit le contrat affiché** (un CDI chez un cabinet de conseil
+compte comme `Consultant`). Si `contrats` est renseigné **sans** `Consultant`, écarter ces offres (entreprise
+qui se présente comme cabinet de conseil, conseil en ingénierie, ESN, portage, ou annonce « pour l'un de nos
+clients ») ; si `Consultant` y figure, les garder. En cas de doute, garder l'offre et le dire dans
+`missingCriteria` (« cabinet de conseil à vérifier »).
+
 ## Quoi chercher
 
 Pour chaque recherche, les offres publiées depuis la dernière publication. Sources : API ou site de
