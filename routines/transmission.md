@@ -47,7 +47,7 @@ Les valeurs de choix sont enregistrées telles quelles.
 | `veille` | `metier`, `technos`, `niveau` (synthèse, détaillé, expert) |
 | `revue` | `sujets` (ajoutés petit à petit), `mediasInclus`, `mediasExclus` |
 
-Échelle (app 0.10) : une note qui porte `"echelle": 10` va de 1 à 10 (5 étoiles, une étoile = 2 points, demi-étoile = 1 point) ; une note sans `echelle` est sur 5 (anciens envois). L'app convertit alors toutes les notes existantes (×2) : remplacer les notes de même `cle`. Pour comparer, ramener sur 5 (note / 2). Les questionnaires de référence donnent alors « Aimé » = 8 et « Pas aimé » = 4. `source` vaut aussi `steam` (jeu vidéo trouvé par la recherche de l'app, `id` = appid Steam).
+Échelle (app 0.10) : une note qui porte `"echelle": 10` va de 1 à 10 (5 étoiles, une étoile = 2 points, demi-étoile = 1 point) ; une note sans `echelle` est sur 5 (anciens envois). Les notes déjà envoyées avant l'app 0.10 restent sur 5 dans `criteres.json` (l'app ne les renvoie pas) ; une note modifiée ensuite arrive sur 10 et remplace celle de même `cle`. Les notes importées de la collection BGG d'Arthur arrivent avec `source` `bgg` et `echelle` 10. Pour comparer, ramener sur 5 (note / 2). Les questionnaires de référence donnent alors « Aimé » = 8 et « Pas aimé » = 4. `source` vaut aussi `steam` (jeu vidéo trouvé par la recherche de l'app, `id` = appid Steam).
 
 Notes : `domaine` vaut film, jeu-societe, jeu-video, livre ou musique ; `personne` vaut arthur ou julie ;
 `note` va de 1 (détesté) à 5 (adoré), ou de 1 à 10 avec `echelle` 10 ; `source` vaut `tmdb` (film trouvé par la recherche de l'app,
