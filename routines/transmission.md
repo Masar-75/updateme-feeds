@@ -21,7 +21,7 @@ Une consigne en français, puis un bloc JSON :
 | `criteres.<onglet>` | Toutes les réponses d'un onglet (objet), au premier critère ou quand l'onglet est vidé |
 | `criteres.<onglet>.<question>` | Une réponse : texte, nombre, ou liste de textes |
 | `recherchesEmploi[<cle>]` | Une recherche d'emploi : `{"cle", "reponses": {…}}` |
-| `notes[<cle>]` | Une note : `{"cle", "domaine", "personne", "source", "id", "titre", "annee", "note", "lien"}` |
+| `notes[<cle>]` | Une note : `{"cle", "domaine", "personne", "source", "id", "titre", "annee", "note", "lien", "commentaire"}` (`commentaire` : texte libre d'Arthur ou de Julie, 500 caractères au plus, depuis l'app 0.9 ; absent ou vide s'il n'y en a pas) |
 | `wishlist[<cle>]` | Un élément de wish list (app 0.8) : `{"cle", "categorie", "source", "id", "titre", "sousTitre", "annee", "lien", "image", "ajouteLe", "flux", "item"}` |
 | `frequences.<onglet>` | Le rythme d'un onglet : `{"rythme", "jours", "joursDuMois", "heure"}` |
 | `frequences.<onglet>.<champ>` | Un champ de ce rythme |
@@ -50,7 +50,7 @@ Les valeurs de choix sont enregistrées telles quelles.
 Notes : `domaine` vaut film, jeu-societe, jeu-video, livre ou musique ; `personne` vaut arthur ou julie ;
 `note` va de 1 (détesté) à 5 (adoré) ; `source` vaut `tmdb` (film trouvé par la recherche de l'app,
 `id` = id TMDB) ou `flux` (note donnée depuis une carte, `id` = id de l'item du flux).
-Les questionnaires de référence de l'app écrivent aussi des notes : « Aimé » vaut 4, « Pas aimé » vaut 2, « pas vu » ne donne aucune note. Pour les BD, `source` vaut `ref-bd`, `id` est un identifiant maison (par exemple `maus`), `lien` est vide et la clé a la forme `livre:<personne>:ref-bd:<id>` : se servir du `titre`, pas du lien. Pour les jeux de société (questionnaire « Noter des jeux proposés », app 0.7), `source` vaut `bgg`, `id` est l'identifiant BoardGameGeek vérifié, `lien` la fiche BGG, et la clé a la forme `jeu_societe:<personne>:bgg:<id>` (tiret bas, comme dans le code de l app ; le champ `domaine` reste `jeu-societe`) ; `scripts/reco_jeux.py` s'en sert directement. Une source inconnue se traite comme une note de plus, sans rien en déduire d'autre.
+Les questionnaires de référence de l'app écrivent aussi des notes : « Aimé » vaut 4, « Pas aimé » vaut 2, « pas vu » ne donne aucune note. Pour les BD, `source` vaut `ref-bd`, `id` est un identifiant maison (par exemple `maus`), `lien` est vide et la clé a la forme `livre:<personne>:ref-bd:<id>` : se servir du `titre`, pas du lien. Pour les jeux de société (questionnaire « Noter des jeux proposés », app 0.7), `source` vaut `bgg`, `id` est l'identifiant BoardGameGeek vérifié, `lien` la fiche BGG, et la clé a la forme `jeu_societe:<personne>:bgg:<id>` (tiret bas, comme dans le code de l app ; le champ `domaine` reste `jeu-societe`) ; `scripts/reco_jeux.py` s'en sert directement. Le `commentaire` d'une note précise ce qui a plu ou déplu : les routines s'en servent pour affiner les goûts (thème, durée, ambiance…), sans jamais le recopier dans un flux publié. `source` vaut aussi `openlibrary` (livre trouvé par la recherche de l'app, `id` = clé d'œuvre Open Library). Une source inconnue se traite comme une note de plus, sans rien en déduire d'autre.
 
 Wish list (app 0.8) : `cle` = `<categorie>:<source>:<id>` ; `categorie` vaut film, livre, jeu-societe,
 jeu-video, emploi ou article (Veille et Revue partagent `article` ; toutes les rubriques Livres partagent `livre`) ;
