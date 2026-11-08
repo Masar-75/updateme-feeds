@@ -173,9 +173,11 @@ def candidats(likes: list[int], f: dict, deja: set[int], n: int = 100,
     return out[:n]
 
 
-def selection(notes: list[dict], crit: dict, nouveautes: bool, maxi: int) -> dict:
+def selection(notes: list[dict], crit: dict, nouveautes: bool, maxi: int,
+              wishlist: set[int] | None = None) -> dict:
+    """`wishlist` : ids BGG déjà en wish list ; jamais proposés (ils n'entrent pas dans le profil)."""
     par_personne: dict[str, list[tuple[dict, int]]] = defaultdict(list)
-    introuvables, deja, familles = [], set(), set()
+    introuvables, deja, familles = [], set(wishlist or ()), set()
     for nt in notes:
         g = retrouver(nt)
         if not g:
@@ -295,6 +297,15 @@ DEMO = [  # notes FICTIVES pour vérifier la méthode : ce ne sont pas les goût
 ]
 
 
+def wishlist_bgg(doc: dict) -> set[int]:
+    """Ids BGG des jeux de société en wish list (`wishlist` à la racine de criteres.json)."""
+    ids = set()
+    for w in doc.get("wishlist", []):
+        if w.get("categorie") == "jeu-societe" and w.get("source") == "bgg" and str(w.get("id", "")).isdigit():
+            ids.add(int(w["id"]))
+    return ids
+
+
 def main(argv: list[str]) -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--criteres", help="criteres.json en clair")
@@ -302,13 +313,16 @@ def main(argv: list[str]) -> None:
     ap.add_argument("--nouveautes", action="store_true", help="seulement les jeux de l'an dernier et de cette année")
     ap.add_argument("--max", type=int, default=10)
     a = ap.parse_args(argv)
+    wish: set[int] = set()
     if a.demo:
         crit = {"joueurs": 4, "dureeMaxMin": 45, "complexite": ["légère", "moyenne"], "themesAEviter": ["vulgaire"]}
         notes = DEMO
     else:
-        tab = json.load(open(a.criteres, encoding="utf-8"))["tabs"].get("jeux-societe", {})
+        doc = json.load(open(a.criteres, encoding="utf-8"))
+        tab = doc["tabs"].get("jeux-societe", {})
         crit, notes = tab, tab.get("notes", [])
-    json.dump(selection(notes, crit, a.nouveautes, a.max), sys.stdout, ensure_ascii=False, indent=1)
+        wish = wishlist_bgg(doc)
+    json.dump(selection(notes, crit, a.nouveautes, a.max, wish), sys.stdout, ensure_ascii=False, indent=1)
     print()
 
 

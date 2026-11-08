@@ -22,6 +22,7 @@ Une consigne en français, puis un bloc JSON :
 | `criteres.<onglet>.<question>` | Une réponse : texte, nombre, ou liste de textes |
 | `recherchesEmploi[<cle>]` | Une recherche d'emploi : `{"cle", "reponses": {…}}` |
 | `notes[<cle>]` | Une note : `{"cle", "domaine", "personne", "source", "id", "titre", "annee", "note", "lien"}` |
+| `wishlist[<cle>]` | Un élément de wish list (app 0.8) : `{"cle", "categorie", "source", "id", "titre", "sousTitre", "annee", "lien", "image", "ajouteLe", "flux", "item"}` |
 | `frequences.<onglet>` | Le rythme d'un onglet : `{"rythme", "jours", "joursDuMois", "heure"}` |
 | `frequences.<onglet>.<champ>` | Un champ de ce rythme |
 
@@ -51,9 +52,17 @@ Notes : `domaine` vaut film, jeu-societe, jeu-video, livre ou musique ; `personn
 `id` = id TMDB) ou `flux` (note donnée depuis une carte, `id` = id de l'item du flux).
 Les questionnaires de référence de l'app écrivent aussi des notes : « Aimé » vaut 4, « Pas aimé » vaut 2, « pas vu » ne donne aucune note. Pour les BD, `source` vaut `ref-bd`, `id` est un identifiant maison (par exemple `maus`), `lien` est vide et la clé a la forme `livre:<personne>:ref-bd:<id>` : se servir du `titre`, pas du lien. Pour les jeux de société (questionnaire « Noter des jeux proposés », app 0.7), `source` vaut `bgg`, `id` est l'identifiant BoardGameGeek vérifié, `lien` la fiche BGG, et la clé a la forme `jeu_societe:<personne>:bgg:<id>` (tiret bas, comme dans le code de l app ; le champ `domaine` reste `jeu-societe`) ; `scripts/reco_jeux.py` s'en sert directement. Une source inconnue se traite comme une note de plus, sans rien en déduire d'autre.
 
+Wish list (app 0.8) : `cle` = `<categorie>:<source>:<id>` ; `categorie` vaut film, livre, jeu-societe,
+jeu-video, emploi ou article (Veille et Revue partagent `article` ; toutes les rubriques Livres partagent `livre`) ;
+`source` vaut `tmdb`, `bgg`, `openlibrary` (id = clé d'œuvre Open Library) ou `flux` (ajout depuis une carte :
+`id` = `<flux>/<item>`, et `flux`, `item` sont remplis). Champs inconnus à `null`. `ajout` porte l'élément entier,
+`suppression` seulement le chemin ; un élément retiré puis remis avant l'envoi arrive en `modification`.
+Quand la wish list a changé, l'app ajoute sous l'en-tête la consigne : ne pas reproposer ces éléments comme
+suggestions, et signaler leur sortie ou leur disponibilité quand elle est constatée.
+
 ## Où ranger chaque changement dans `config/criteres.json`
 
-`criteres.json` = `{"schemaVersion": 1, "tabs": {"<onglet>": {…}}}`. Pour chaque onglet, `tabs.<onglet>`
+`criteres.json` = `{"schemaVersion": 1, "tabs": {"<onglet>": {…}}, "wishlist": [ … ]}`. Pour chaque onglet, `tabs.<onglet>`
 contient les réponses aux questions (mêmes clés que ci-dessus), plus trois clés réservées :
 `recherches` (emploi), `notes` et `frequence`.
 
@@ -63,6 +72,7 @@ contient les réponses aux questions (mêmes clés que ci-dessus), plus trois cl
 | `criteres.<onglet>.<question>` | Texte ou nombre : écrire ou retirer `tabs.<onglet>.<question>`. Liste de textes : ajouter ou retirer l'élément `valeur` |
 | `recherchesEmploi[<cle>]` | Dans `tabs.emploi.recherches`, ajouter, remplacer ou retirer l'élément de même `cle`, sous la forme `{"cle", …reponses}` (réponses à plat) |
 | `notes[<cle>]` | Dans `tabs.<onglet du domaine>.notes` (film → `films`, jeu-societe → `jeux-societe`, jeu-video → `jeux-video`, livre → `livres`, musique → `musique`), ajouter, remplacer ou retirer l'élément de même `cle`. Les notes de livres sont communes à toutes les rubriques Livres |
+| `wishlist[<cle>]` | Dans la liste `wishlist` à la racine (pas dans `tabs`), ajouter, remplacer ou retirer l'élément de même `cle` |
 | `frequences.<onglet>` et ses champs | Écrire dans `tabs.<onglet>.frequence` ; si le rythme change, mettre à jour la planification de la routine de l'onglet |
 
 ## Rubriques Livres dupliquées

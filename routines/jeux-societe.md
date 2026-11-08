@@ -10,7 +10,7 @@ se déduisent des jeux bien notés.
 
 ## Sélection à partir des notes (`scripts/reco_jeux.py`)
 
-Dès que `tabs.jeux-societe.notes` contient des notes, lancer d'abord, sur `criteres.json` déchiffré :
+Dès que `tabs.jeux-societe.notes` contient des notes, lancer d'abord, sur `criteres.json` déchiffré (le script écarte de lui-même les jeux BGG de la wish list) :
 
 ```
 python3 scripts/reco_jeux.py --criteres plain/config/criteres.json --max 10 > /tmp/selection.json

@@ -31,6 +31,12 @@ Les clés des critères sont celles de l'app : la liste fait référence dans `t
    **ne rien publier** et terminer en disant quel critère manque.
 3. Lire `plain/feeds/<id>.json` : les items déjà publiés. Ne jamais republier un item déjà présent
    (même `id`, ou même `sourceUrl`). Garder les items encore pertinents.
+   Lire aussi `wishlist` (racine de `criteres.json`), éléments de la catégorie de l'onglet (film → films,
+   livre → toutes les rubriques Livres, jeu-societe, jeu-video, emploi, article → veille et revue) : Arthur
+   les a déjà repérés, **ne jamais les proposer comme suggestions** (comparer `id` TMDB/BGG/Open Library,
+   sinon `lien`, sinon titre + année). Si la routine constate une nouvelle disponibilité d'un élément de la
+   wish list (sortie en salle ou en streaming, parution, sortie d'un jeu, offre bientôt close), elle peut
+   publier un item qui le signale, avec un `summary` qui commence par « Wish list : » et un vrai `sourceUrl`.
 4. Chercher les nouveautés (recherche web et sources de l'onglet). Chaque item :
    - porte un `sourceUrl` réel, ouvert et lu pendant la routine ; aucun lien deviné ou reconstruit ;
    - a un `id` stable : `<id-onglet>-<AAAA-MM-JJ>-<slug court>` ;
