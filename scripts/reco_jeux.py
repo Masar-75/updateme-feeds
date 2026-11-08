@@ -85,7 +85,7 @@ def traits(g: dict) -> set[str]:
             | ({"m:Cooperative Game"} if g.get("cooperative") else set()))
 
 
-def profil(notes_jeux: list[tuple[dict, int]]) -> dict:
+def profil(notes_jeux: list[tuple[dict, float]]) -> dict:
     """Poids de chaque trait = somme des notes centrées / (nombre + 2) : un trait vu une fois pèse peu."""
     somme, nb = defaultdict(float), defaultdict(int)
     for g, note in notes_jeux:
@@ -173,10 +173,16 @@ def candidats(likes: list[int], f: dict, deja: set[int], n: int = 100,
     return out[:n]
 
 
+def note_sur_5(nt: dict) -> float:
+    """Les notes de l'app 0.10 portent "echelle": 10 ; sans echelle, la note est sur 5."""
+    n = float(nt["note"])
+    return n / 2 if int(nt.get("echelle", 5)) == 10 else n
+
+
 def selection(notes: list[dict], crit: dict, nouveautes: bool, maxi: int,
               wishlist: set[int] | None = None) -> dict:
     """`wishlist` : ids BGG déjà en wish list ; jamais proposés (ils n'entrent pas dans le profil)."""
-    par_personne: dict[str, list[tuple[dict, int]]] = defaultdict(list)
+    par_personne: dict[str, list[tuple[dict, float]]] = defaultdict(list)
     introuvables, deja, familles = [], set(wishlist or ()), set()
     for nt in notes:
         g = retrouver(nt)
@@ -185,7 +191,7 @@ def selection(notes: list[dict], crit: dict, nouveautes: bool, maxi: int,
             continue
         deja.add(g["bgg_id"])
         familles.add(nom_famille(g))
-        par_personne[nt.get("personne", "arthur")].append((g, int(nt["note"])))
+        par_personne[nt.get("personne", "arthur")].append((g, note_sur_5(nt)))
     profils = {p: profil(v) for p, v in par_personne.items()}
     f = filtres(crit, nouveautes)
     # Un ensemble de voisins par personne (ses jeux aimés), pour que les goûts de chacun comptent.

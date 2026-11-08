@@ -47,8 +47,10 @@ Les valeurs de choix sont enregistrées telles quelles.
 | `veille` | `metier`, `technos`, `niveau` (synthèse, détaillé, expert) |
 | `revue` | `sujets` (ajoutés petit à petit), `mediasInclus`, `mediasExclus` |
 
+Échelle (app 0.10) : une note qui porte `"echelle": 10` va de 1 à 10 (5 étoiles, une étoile = 2 points, demi-étoile = 1 point) ; une note sans `echelle` est sur 5 (anciens envois). L'app convertit alors toutes les notes existantes (×2) : remplacer les notes de même `cle`. Pour comparer, ramener sur 5 (note / 2). Les questionnaires de référence donnent alors « Aimé » = 8 et « Pas aimé » = 4. `source` vaut aussi `steam` (jeu vidéo trouvé par la recherche de l'app, `id` = appid Steam).
+
 Notes : `domaine` vaut film, jeu-societe, jeu-video, livre ou musique ; `personne` vaut arthur ou julie ;
-`note` va de 1 (détesté) à 5 (adoré) ; `source` vaut `tmdb` (film trouvé par la recherche de l'app,
+`note` va de 1 (détesté) à 5 (adoré), ou de 1 à 10 avec `echelle` 10 ; `source` vaut `tmdb` (film trouvé par la recherche de l'app,
 `id` = id TMDB) ou `flux` (note donnée depuis une carte, `id` = id de l'item du flux).
 Les questionnaires de référence de l'app écrivent aussi des notes : « Aimé » vaut 4, « Pas aimé » vaut 2, « pas vu » ne donne aucune note. Pour les BD, `source` vaut `ref-bd`, `id` est un identifiant maison (par exemple `maus`), `lien` est vide et la clé a la forme `livre:<personne>:ref-bd:<id>` : se servir du `titre`, pas du lien. Pour les jeux de société (questionnaire « Noter des jeux proposés », app 0.7), `source` vaut `bgg`, `id` est l'identifiant BoardGameGeek vérifié, `lien` la fiche BGG, et la clé a la forme `jeu_societe:<personne>:bgg:<id>` (tiret bas, comme dans le code de l app ; le champ `domaine` reste `jeu-societe`) ; `scripts/reco_jeux.py` s'en sert directement. Le `commentaire` d'une note précise ce qui a plu ou déplu : les routines s'en servent pour affiner les goûts (thème, durée, ambiance…), sans jamais le recopier dans un flux publié. `source` vaut aussi `openlibrary` (livre trouvé par la recherche de l'app, `id` = clé d'œuvre Open Library). Une source inconnue se traite comme une note de plus, sans rien en déduire d'autre.
 

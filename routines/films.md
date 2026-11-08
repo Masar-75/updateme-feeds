@@ -6,7 +6,7 @@ Onglet `films`, kind `movie`. Suis le socle commun de `routines/README.md`.
 
 `pourQui` (arthur, julie, à deux), `cinemas` (Astrée, Forum, Pathé Chambéry), `plateformes` (Netflix,
 Canal+), `genresAEviter`, `dureeMaxMin`, `version` (VF, VOST, indifférent), et `notes` : les notes
-d'Arthur et de Julie (1 à 5, par `personne`), qui forment leurs profils de goût.
+d'Arthur et de Julie (sur 5, ou sur 10 si `echelle` vaut 10 ; voir transmission.md), par `personne`), qui forment leurs profils de goût.
 
 ## Quoi chercher
 
