@@ -40,8 +40,8 @@ Les valeurs de choix sont enregistrées telles quelles.
 | Onglet | Questions (`criteres.<onglet>.…`, ou `reponses` d'une recherche pour l'emploi) |
 | --- | --- |
 | `emploi` | Par recherche : `metier` (le poste), `lieu`, `rayonKm`, `contrats` (CDI, CDD, Freelance, Alternance, Intérim, Consultant : offres de cabinets de conseil, ESN ou portage, même en CDI ; voir `emploi.md`), `teletravail` (aucun, partiel, total, indifférent), `salaireMinK` (k€ par an), `motsCles` (mots-clés à trouver dans la description de l'offre), `exclure` (mots-clés ou entreprises) |
-| `films` | `pourQui` (arthur, julie, à deux), `cinemas` (Astrée, Forum, Pathé Chambéry), `plateformes` (Netflix, Canal+), `genresAEviter`, `dureeMaxMin`, `version` (VF, VOST, indifférent) |
-| `jeux-societe` | `joueurs`, `dureeMaxMin`, `complexite` (légère, moyenne, experte), `style` (coopératif, compétitif, en équipes), `themesAEviter` |
+| `films` | `pourQui` (arthur, julie, à deux ; réglé aussi par le curseur de l'onglet depuis l'app 0.13), `cinemas` (Astrée, Forum, Pathé Chambéry), `plateformes` (Netflix, Canal+), `genresAEviter`, `dureeMaxMin`, `version` (VF, VOST, indifférent) |
+| `jeux-societe` | `pourQui` (arthur, julie, à deux : curseur de l'onglet, app 0.13), `joueurs`, `dureeMaxMin`, `complexite` (légère, moyenne, experte), `style` (coopératif, compétitif, en équipes), `themesAEviter` |
 | `jeux-video` | `plateformes` (PC, PlayStation, Xbox, Switch, mobile), `genresPreferes`, `heuresParSemaine`, `mode` (solo, multijoueur, coopération), `genresAEviter` |
 | `livres` et `livres-<nom>` | `nom` (nom affiché de la rubrique), `formats` (roman, bd, manga, comics, essai, autre : mêmes valeurs que `book.format`), `genresPreferes`, `auteursAimes` (auteurs et dessinateurs), `genresAEviter`, `langues` (français, anglais, autre), `parutionMaxMois` (ne garder que les parutions de moins de N mois) |
 | `veille` | `metier`, `technos`, `niveau` (synthèse, détaillé, expert) |

@@ -33,3 +33,7 @@ personne visée (même id TMDB ou même titre), ni une suite d'un film qu'elle a
   `trailerUrl` si une bande-annonce officielle existe, `whereToWatch`, `whyYou` (une phrase, à partir des profils).
 - `aiGenerated: true` (`whyYou` est écrit par Claude).
 - Mention obligatoire si TMDB est utilisée : elle figure dans l'app, rien à ajouter ici.
+
+## Pour qui (app 0.13)
+
+`pourQui` vaut `arthur`, `julie` ou `à deux` : composer les propositions pour cette personne (ses notes), ou pour les deux avec la règle « moyenne sans misère » (écarter ce qu'un des deux déteste). Même règle pour `jeux-societe`.
