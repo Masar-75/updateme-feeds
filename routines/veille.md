@@ -9,13 +9,15 @@ Onglet `veille`, kind `article`. Suis le socle commun de `routines/README.md`.
 
 ## Quoi chercher
 
-Les nouveautés des 7 derniers jours (ou depuis `updatedAt` du flux) sur le métier et chaque techno :
+Les nouveautés parues depuis le passage précédent (`updatedAt` du flux ; 7 jours au plus) sur le métier et
+chaque techno. La routine passe plusieurs fois par semaine (`tabs.veille.frequence.jours`) : un passage
+sans vraie nouveauté publie peu, voire rien, plutôt que de répéter. Chercher :
 versions publiées, annonces officielles, articles de fond, retours d'expérience. Priorité aux sources
 primaires (blog officiel, notes de version, dépôt du projet). `niveau` règle la profondeur :
 synthèse = l'essentiel en une phrase, expert = détails techniques et changements incompatibles.
 Regrouper les doublons : une seule carte par nouveauté, avec la source la plus primaire.
 
-Entre 5 et 15 items. Mieux vaut 3 items solides que 15 approximatifs.
+Au plus 15 items par passage, souvent moins. Mieux vaut 3 items solides que 15 approximatifs.
 
 ## Remplir l'item
 
